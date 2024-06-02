@@ -17,7 +17,8 @@ const SignUp = () => {
         e.preventDefault()
         
         try {
-            const response = await fetch('api/users', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

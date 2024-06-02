@@ -43,7 +43,8 @@ const ProductPage = () => {
         //if user is logged in, check if product is favorited
         if (localStorage.userInfo && product){
             const getFavoriteStatus = async () => {
-                const response = await fetch(`/api/profile/favorite?productId=${product._id}`, {
+                const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+                const response = await fetch(`${apiBaseUrl}/profile/favorite?productId=${product._id}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -65,7 +66,8 @@ const ProductPage = () => {
         e.preventDefault()
         
         try{
-            const response = await fetch('/api/profile/add', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/add`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -94,7 +96,8 @@ const ProductPage = () => {
 
     const handleFavoriteClick = async (e) => {
         try {
-            const response = await fetch('/api/profile/favorite', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/favorite`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

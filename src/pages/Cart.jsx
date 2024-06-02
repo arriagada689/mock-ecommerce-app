@@ -20,7 +20,8 @@ const Cart = () => {
 
     useEffect(() => {
         const getCartItems = async () => {
-            const response = await fetch('/api/profile/cart', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/cart`, {
                 headers: {
                     'Content-Type': 'application/json'
                 } 
@@ -44,7 +45,8 @@ const Cart = () => {
     }
 
     const handleOrderClick = async (e) => {
-        const response = await fetch('/api/profile/register_order', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/profile/register_order`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

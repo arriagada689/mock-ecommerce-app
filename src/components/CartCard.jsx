@@ -12,7 +12,8 @@ const CartCard = ({ product, setUpdate }) => {
     const removeFromCart = async (e) => {
         e.preventDefault()
         
-        const response = await fetch('/api/profile/delete', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/profile/delete`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +34,8 @@ const CartCard = ({ product, setUpdate }) => {
 
     const handleQuantityChange = async (e) => {
         setQuantity(e.target.value)
-        const response = await fetch('/api/profile/update_quantity', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/profile/update_quantity`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

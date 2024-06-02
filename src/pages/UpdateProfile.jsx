@@ -18,7 +18,8 @@ const UpdateUsername = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        const response = await fetch('/api/users/profile', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/users/profile`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -11,7 +11,8 @@ const Profile = () => {
 
     useEffect(() => {
         const getFavorites = async () => {
-            const response = await fetch('/api/profile/get_favorites', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/get_favorites`, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -28,7 +29,8 @@ const Profile = () => {
 
     useEffect(() => {
         const getOrders = async () => {
-            const response = await fetch('/api/profile/get_orders', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/get_orders`, {
                 headers: {
                     'Content-Type': 'application/json'
                 },

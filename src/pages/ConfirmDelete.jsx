@@ -13,7 +13,8 @@ const ConfirmDelete = () => {
     }
     
     const handleDeleteProfile = async () => {
-        const response = await fetch('/api/profile/delete_profile', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/profile/delete_profile`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

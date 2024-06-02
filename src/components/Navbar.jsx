@@ -21,7 +21,8 @@ const Navbar = () => {
     const logoutHandler = async (e) => {
         e.preventDefault();
         
-        const response = await fetch('/api/users/logout', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        const response = await fetch(`${apiBaseUrl}/users/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

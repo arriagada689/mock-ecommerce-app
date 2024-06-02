@@ -7,7 +7,8 @@ const FavoriteCard = ({ product, setUpdate }) => {
     //make image link back to the product
     const removeFavorite = async (e) => {
         try {
-            const response = await fetch('/api/profile/favorite', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/profile/favorite`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
