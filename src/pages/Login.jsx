@@ -19,6 +19,7 @@ const Login = () => {
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
       const response = await fetch(`${apiBaseUrl}/users/auth`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },

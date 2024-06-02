@@ -45,6 +45,7 @@ const ProductPage = () => {
             const getFavoriteStatus = async () => {
                 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
                 const response = await fetch(`${apiBaseUrl}/profile/favorite?productId=${product._id}`, {
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     }
