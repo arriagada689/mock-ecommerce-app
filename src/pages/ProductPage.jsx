@@ -19,6 +19,8 @@ const ProductPage = () => {
 
     const navigate = useNavigate();
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
     useEffect(() => {
         //get product data
         const fetchProduct = async () => {
@@ -43,11 +45,13 @@ const ProductPage = () => {
         //if user is logged in, check if product is favorited
         if (localStorage.userInfo && product){
             const getFavoriteStatus = async () => {
+                
                 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
                 const response = await fetch(`${apiBaseUrl}/profile/favorite?productId=${product._id}`, {
-                    credentials: 'include',
+                    
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${userInfo.token}`
                     }
                 })
                 if (response.ok) {
@@ -71,7 +75,8 @@ const ProductPage = () => {
             const response = await fetch(`${apiBaseUrl}/profile/add`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`
                 },
                 body: JSON.stringify({
                     productId: product._id,
@@ -101,7 +106,8 @@ const ProductPage = () => {
             const response = await fetch(`${apiBaseUrl}/profile/favorite`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`
                 },
                 body: JSON.stringify({
                     productId: product._id

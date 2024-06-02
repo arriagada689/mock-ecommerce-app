@@ -9,6 +9,8 @@ const CartCard = ({ product, setUpdate }) => {
     const [quantity, setQuantity] = useState(product.quantity)
     const { updateNavbar } = useContext(AuthContext)
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
     const removeFromCart = async (e) => {
         e.preventDefault()
         
@@ -16,7 +18,8 @@ const CartCard = ({ product, setUpdate }) => {
         const response = await fetch(`${apiBaseUrl}/profile/delete`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userInfo.token}`
             },
             body: JSON.stringify({
                 productId: product.product._id
@@ -38,7 +41,8 @@ const CartCard = ({ product, setUpdate }) => {
         const response = await fetch(`${apiBaseUrl}/profile/update_quantity`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userInfo.token}`
             },
             body: JSON.stringify({
                 productId: product.product._id,

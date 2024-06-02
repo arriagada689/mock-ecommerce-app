@@ -8,6 +8,8 @@ const ConfirmDelete = () => {
     const navigate = useNavigate();
     const { deleteProfile } = useContext(AuthContext)
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
     const goBack = () => {
         navigate(-1)
     }
@@ -17,7 +19,8 @@ const ConfirmDelete = () => {
         const response = await fetch(`${apiBaseUrl}/profile/delete_profile`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userInfo.token}`
             }
         })
         if(response.ok){

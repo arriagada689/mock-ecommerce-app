@@ -22,7 +22,8 @@ const UpdateUsername = () => {
         const response = await fetch(`${apiBaseUrl}/users/profile`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userInfoObject.token}`
             },
             body: JSON.stringify({
                 username: username,

@@ -21,18 +21,19 @@ const Navbar = () => {
     const logoutHandler = async (e) => {
         e.preventDefault();
         
-        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
-        const response = await fetch(`${apiBaseUrl}/users/logout`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        const data = await response.json()
-        if (response.ok) {
-            logoutUser()
-            navigate('/')
-        }
+        // const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+        // const response = await fetch(`${apiBaseUrl}/users/logout`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        // })
+        // const data = await response.json()
+        // if (response.ok) {
+        //     logoutUser()
+        //     navigate('/')
+        // }
+        logoutUser()
     }
 
     return (

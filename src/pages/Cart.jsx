@@ -12,6 +12,7 @@ const Cart = () => {
     const { updateNavbar } = useContext(AuthContext)
     const [cartTotal, setCartTotal] = useState(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')).cartTotal : 0);
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,7 +24,8 @@ const Cart = () => {
             const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
             const response = await fetch(`${apiBaseUrl}/profile/cart`, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`
                 } 
             })
             if(response.ok) {
@@ -49,7 +51,8 @@ const Cart = () => {
         const response = await fetch(`${apiBaseUrl}/profile/register_order`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userInfo.token}`
             },
             body: JSON.stringify({
                 total: total

@@ -4,6 +4,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 const FavoriteCard = ({ product, setUpdate }) => {
     
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
     //make image link back to the product
     const removeFavorite = async (e) => {
         try {
@@ -11,7 +13,8 @@ const FavoriteCard = ({ product, setUpdate }) => {
             const response = await fetch(`${apiBaseUrl}/profile/favorite`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`
                 },
                 body: JSON.stringify({
                     productId: product._id
