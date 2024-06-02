@@ -35,7 +35,7 @@ const Search = () => {
                 requestBody.priceSorting = priceSorting
             }
             
-            const response = await fetch('/api/products/search', {
+            const response = await fetch('https://ecommerce-api-depeche.onrender.com/api/products/search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
