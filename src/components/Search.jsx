@@ -35,7 +35,8 @@ const Search = () => {
                 requestBody.priceSorting = priceSorting
             }
             
-            const response = await fetch('https://ecommerce-api-depeche.onrender.com/api/products/search', {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/products/search`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
