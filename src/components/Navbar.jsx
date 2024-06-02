@@ -7,7 +7,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    // const linkClass = ({ isActive }) => isActive ? "hover:text-gray-600" : "hover:text-gray-600"
     const { isLoggedIn } = useContext(AuthContext);
     const { logoutUser } = useContext(AuthContext)
     const [cartTotal, setCartTotal] = useState(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')).cartTotal : 0);
@@ -21,19 +20,8 @@ const Navbar = () => {
     const logoutHandler = async (e) => {
         e.preventDefault();
         
-        // const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
-        // const response = await fetch(`${apiBaseUrl}/users/logout`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        // })
-        // const data = await response.json()
-        // if (response.ok) {
-        //     logoutUser()
-        //     navigate('/')
-        // }
         logoutUser()
+        navigate('/')
     }
 
     return (

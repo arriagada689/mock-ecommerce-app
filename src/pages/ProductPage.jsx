@@ -187,8 +187,8 @@ const ProductPage = () => {
                 <BsCartCheckFill size={150}/>
                 <div className='text-3xl font-bold text-center'>Added to cart</div>
                 <div className='flex space-x-12 mt-7'>
-                    <Link to='/' className='bg-blue-700 w-fit text-white py-2 px-3 rounded'>Keep Shopping</Link>
-                    <Link to='/cart' className='border border-gray-300 w-fit py-2 px-3 rounded'>Go To Cart</Link>
+                    <Link to='/cart' className='bg-blue-700 w-fit text-white py-2 px-3 rounded'>Go to Cart</Link>
+                    <Link to='/' className='border border-gray-300 w-fit py-2 px-3 rounded'>Keep Shopping</Link>
                 </div>
             </div>
         }

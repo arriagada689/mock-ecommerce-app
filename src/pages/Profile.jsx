@@ -51,7 +51,7 @@ const Profile = () => {
 
     const renderFavorites = () => {
         if (favorites.length === 0){
-            return <div>No favorite products to display</div>
+            return <div className='text-center bg-white px-10 py-3'>No favorite products to display</div>
         }
         return favorites.map((product, index) => {
             return <FavoriteCard key={index} product={product} setUpdate={setUpdate}/>
@@ -60,7 +60,7 @@ const Profile = () => {
 
     const renderOrders = () => {
         if (orders.length === 0) {
-            return <div>No orders to display</div>
+            return <div className='text-center bg-white py-3'>No orders to display</div>
         }
         return orders.map((order, index) => {
             return <OrderCard key={index} order={order}/>
