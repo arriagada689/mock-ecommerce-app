@@ -22,7 +22,8 @@ const ProductPage = () => {
     useEffect(() => {
         //get product data
         const fetchProduct = async () => {
-            const response = await fetch(`/api/products/${id}`, {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+            const response = await fetch(`${apiBaseUrl}/products/${id}`, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
