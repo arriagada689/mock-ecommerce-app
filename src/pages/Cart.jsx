@@ -82,7 +82,7 @@ const Cart = () => {
                     {total > 0 && (
                         <div className='text-lg mb-4 w-full flex justify-between'>
                             <div>Total:</div>
-                            <div><span className='text-red-500'>${total}</span></div>
+                            <div><span className='text-red-500'>${total.toFixed(2)}</span></div>
                         </div>
                     )}
                     {total > 0 ? 

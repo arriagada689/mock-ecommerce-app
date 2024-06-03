@@ -71,12 +71,13 @@ const ProductPage = () => {
         e.preventDefault()
         
         try{
+            
             const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
             const response = await fetch(`${apiBaseUrl}/profile/add`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userInfo.token}`
+                    'Authorization': `Bearer ${userInfo ? userInfo.token : ''}`
                 },
                 body: JSON.stringify({
                     productId: product._id,
@@ -89,7 +90,8 @@ const ProductPage = () => {
                 updateNavbar(data.cartTotal)
             } else {
                 const error = await response.json()
-                if(error.message === 'Not authorized, no token') {
+                // console.log(error)
+                if(error.message === 'Not authorized, no token' || error.message === 'Not authorized, invalid token') {
                     navigate('/prompt')
                 } else if(error.message === 'No more than 10 quantity per item') {
                     setErrorMessage(error.message)
@@ -107,7 +109,7 @@ const ProductPage = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userInfo.token}`
+                    'Authorization': `Bearer ${userInfo ? userInfo.token : ''}`
                 },
                 body: JSON.stringify({
                     productId: product._id
@@ -117,6 +119,8 @@ const ProductPage = () => {
                 const data = await response.json()
                 setFavorite(data.status)
             } else {
+                const error = await response.json()
+                // console.log(error)
                 navigate('/prompt')
             }
         } catch (error) {

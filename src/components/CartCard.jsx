@@ -65,7 +65,7 @@ const CartCard = ({ product, setUpdate }) => {
 
             <div className='w-full flex flex-col space-y-1'>
                 <Link to={`/product/${product.product.id}`} className=''>{product.product.title}</Link>
-                <div>Price: <span className='text-red-500'>${product.subtotal}</span></div>
+                <div>Price: <span className='text-red-500'>${product.subtotal.toFixed(2)}</span></div>
                     <div className='flex'>
                         <div className='flex'>
                             <div>Quantity:</div>

@@ -3,19 +3,22 @@ import { useState } from 'react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext.jsx';
+import { ColorRing } from 'react-loader-spinner'
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const { loginUser } = useContext(AuthContext)
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    
+    setLoading(true)
     try {
+      
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
       const response = await fetch(`${apiBaseUrl}/users/auth`, {
         method: 'POST',
@@ -28,9 +31,9 @@ const Login = () => {
         })
       })
       
-      
       if (response.ok){
         const data = await response.json()
+        
         loginUser(data);
         navigate('/')
       } else {
@@ -42,12 +45,25 @@ const Login = () => {
       console.error('Error:', error);
       setErrorMessage(error.message)
     }
-    
+    setLoading(false)
   }
   
   return (
     <div className='flex flex-col items-center'>
-      <div className='flex flex-col space-y-3 py-10 px-10 border border-gray-500 rounded mt-10'>
+      {loading && 
+        <div className='flex items-center justify-center h-[250px]'>
+          <ColorRing
+            visible={true}
+            height="100"
+            width="100"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+        />
+        </div>
+      }
+      {!loading && <div className='flex flex-col space-y-3 py-10 px-10 border border-gray-500 rounded mt-10'>
         <div className='text-2xl font-bold text-center'>Log In</div>
 
         {errorMessage && <div className='border-2 border-red-800 bg-red-300 p-1 px-2 w-fit text-red-600'>{errorMessage}</div>}
@@ -81,7 +97,7 @@ const Login = () => {
 
             <div>Don't have an account? <Link to='/signup' className='text-blue-500 underline' >Register</Link> </div>
         </Form>
-      </div>
+      </div>}
       
     </div>
   )

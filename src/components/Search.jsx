@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Filters from './Filters';
 import ProductCard from './ProductCard';
 import { IoIosSearch } from "react-icons/io";
+import { ColorRing } from 'react-loader-spinner'
 
 const categories = ["electronics","jewelery","men's clothing","women's clothing"]
 
 const Search = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(null)
     const [query, setQuery] = useState('');
     const [categoryFilter, setCategoryFilter] = useState(null)
     const [priceFilter, setPriceFilter] = useState(null)
@@ -14,6 +15,7 @@ const Search = () => {
     const [priceSorting, setPriceSorting] = useState('asc')
     const [isFocused, setIsFocused] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -51,6 +53,7 @@ const Search = () => {
             })
             if (response.ok) {
                 const data = await response.json()
+                setLoading(false)
                 setProducts(data)
             }
         }
@@ -60,6 +63,7 @@ const Search = () => {
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
+            setIsDropdownOpen(window.innerWidth > 768)
         };
 
         window.addEventListener('resize', handleResize);
@@ -161,8 +165,21 @@ const Search = () => {
                     </div>
 
                     {/* Product card container */}
-                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products !== null && products.length > 2 ? 'md:justify-between' : ''} `}>
-                        {products.length > 0 ? renderProducts() : <div>No products match the criteria.</div>}
+                    {loading && 
+                        <div className='flex items-center justify-center h-[250px]'>
+                            <ColorRing
+                                visible={true}
+                                height="100"
+                                width="100"
+                                ariaLabel="color-ring-loading"
+                                wrapperStyle={{}}
+                                wrapperClass="color-ring-wrapper"
+                                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                            />
+                        </div>
+                    }
+                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
+                        {products && products.length > 0 && renderProducts()}
                     </div>
                     
                 </div>
@@ -171,5 +188,10 @@ const Search = () => {
         </div>
     )
 }
+
+ {/* Product card container */}
+//  <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products !== null && products.length > 2 ? 'md:justify-between' : ''} `}>
+//  {products.length > 0 ? renderProducts() : <div>No products match the criteria.</div>}
+// </div>
 
 export default Search

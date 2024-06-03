@@ -19,7 +19,7 @@ const OrderCard = ({ order }) => {
     return (
         <div className='bg-white p-2'>
             <div>order no: <span className='text-green-500'>{order.order._id}</span></div>
-            <div>total: <span className='text-red-500'>${order.order.total}</span></div>
+            <div>total: <span className='text-red-500'>${order.order.total.toFixed(2)}</span></div>
             <div>date: {formattedDate}</div>
             {!seeMore ? <button onClick={handleSeeMoreClick} className='text-blue-600 underline'>See More</button> : 
                 <div><button onClick={handleSeeMoreClick} className='text-blue-600 underline'>Close</button> {renderProducts()}</div> }
