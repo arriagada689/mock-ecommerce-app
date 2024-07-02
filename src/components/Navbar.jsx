@@ -44,17 +44,17 @@ const Navbar = () => {
                         </>}
                 </div>
                 <button className="md:hidden" onClick={() => setIsOpen(prev => !prev)}>
-                <GiHamburgerMenu />
+                <GiHamburgerMenu size={30}/>
                 </button>
             </div>
             {isOpen && isLoggedIn && 
-                <div className="md:hidden flex flex-col space-y-2 mt-2">
+                <div className="md:hidden flex flex-col items-center space-y-2 mt-2">
                     <NavLink to="/profile" className="" onClick={() => setIsOpen(false)}>Profile</NavLink>
                     <NavLink to="/cart" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}><RiShoppingCart2Line size={24}/>{cartTotal}</NavLink>
                     <NavLink onClick={(e) => {logoutHandler(e), setIsOpen(false)}} className="hover:text-gray-600 bg-transparent" >Log Out</NavLink>
                 </div> }
             {isOpen && !isLoggedIn &&
-                <div className="md:hidden flex flex-col space-y-2 mt-2">
+                <div className="md:hidden flex flex-col items-center space-y-2 mt-2">
                     <NavLink to="/login" className="" onClick={() => setIsOpen(false)}>Login</NavLink>
                     <NavLink to="/signup" className="" onClick={() => setIsOpen(false)}>Sign Up</NavLink>
                 </div>
