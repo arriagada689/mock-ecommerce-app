@@ -68,7 +68,7 @@ const Profile = () => {
     }
 
     return (
-        <div className='bg-gray-100 h-screen overflow-auto'>
+        <div className='bg-gray-100 h-screen'>
             <div className='container mx-auto my-5 justify-center'>
                 <div className='flex justify-center items-center text-center space-x-5'>
                     <div className='text-lg'>{userInfo.username}'s profile</div>
