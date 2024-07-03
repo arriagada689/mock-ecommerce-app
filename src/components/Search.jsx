@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Filters from './Filters';
+import Filters2 from './Filters2';
 import ProductCard from './ProductCard';
 import { IoIosSearch } from "react-icons/io";
 import { ColorRing } from 'react-loader-spinner'
-
-const categories = ["electronics","jewelery","men's clothing","women's clothing"]
 
 const Search = () => {
     const [products, setProducts] = useState(null)
@@ -14,8 +13,8 @@ const Search = () => {
     const [ratingFilter, setRatingFilter] = useState(null)
     const [priceSorting, setPriceSorting] = useState('asc')
     const [isFocused, setIsFocused] = useState(false);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [loading, setLoading] = useState(true);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -59,16 +58,6 @@ const Search = () => {
         }
         fetchProducts()
     }, [query, categoryFilter, priceFilter, ratingFilter, priceSorting])
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-            setIsDropdownOpen(window.innerWidth > 768)
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const renderProducts = () => {
         return products.map((product, index) => {
@@ -118,27 +107,21 @@ const Search = () => {
         }
     };
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(window.innerWidth > 768);
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
     return (
         <div className='container mx-auto my-2 '>
             
-            <div className="flex flex-col md:flex-row md:space-x-4">
+            {/*Search section big screens */}
+            <div className="hidden md:flex md:flex-row md:space-x-4">
                 {/* left side container */}
-                {isMobile && (
-                    <button onClick={toggleDropdown} className="bg-blue-500 text-white p-2 w-fit mx-auto mb-2">
-                        Toggle Filters
-                    </button>
-                )}
-                {isDropdownOpen && <Filters 
+                
+                <Filters 
                     handleCategoryChange={handleCategoryChange} 
                     categoryFilter={categoryFilter}
                     handlePriceChange={handlePriceChange}
                     priceFilter={priceFilter}
                     handleRatingChange={handleRatingChange}
                     ratingFilter={ratingFilter}
-                />}
+                />
 
                 {/* right side container */}
                 <div className="flex flex-col w-full">
@@ -149,11 +132,11 @@ const Search = () => {
                             <input 
                                 type="text" 
                                 value={query} 
-                                placeholder=' Search products...'
+                                placeholder='Search products...'
                                 onChange={(e) => setQuery(e.target.value)}
                                 onFocus={() => setIsFocused(true)}
                                 onBlur={() => setIsFocused(false)}
-                                className='border-none focus:outline-none'
+                                className='border-none focus:outline-none pl-2'
                             />
                             <IoIosSearch size={20}/>
                         </div>
@@ -184,14 +167,72 @@ const Search = () => {
                     
                 </div>
             </div>
+
+            {/*Search section for small screens */}
+            <div className='flex flex-col md:hidden'>
+                
+                <button onClick={() => setIsDropdownOpen(prev => !prev)} className="bg-blue-500 text-white p-2 w-fit mx-auto mb-2">
+                    Filter
+                </button>
+
+                {isDropdownOpen && 
+                <Filters2 
+                    handleCategoryChange={handleCategoryChange} 
+                    categoryFilter={categoryFilter}
+                    handlePriceChange={handlePriceChange}
+                    priceFilter={priceFilter}
+                    handleRatingChange={handleRatingChange}
+                    ratingFilter={ratingFilter}
+                />}
+
+                {/* right side container */}
+                <div className="flex flex-col w-full">
+                    
+                    {/* search bar and sorting box container */}
+                    <div className="flex justify-between mb-2 px-1">
+                        <div className={`border-2 ${isFocused ? 'border-black' : 'border-gray-400'} flex w-fit items-center focus:border-black`}>
+                            <input 
+                                type="text" 
+                                value={query} 
+                                placeholder='Search products...'
+                                onChange={(e) => setQuery(e.target.value)}
+                                onFocus={() => setIsFocused(true)}
+                                onBlur={() => setIsFocused(false)}
+                                className='border-none focus:outline-none pl-2'
+                            />
+                            <IoIosSearch size={20}/>
+                        </div>
+
+                        <select id="sorting" name="price-sorting" onChange={handleSortingChange} className="border border-gray-500 py-2 w-fit">
+                            <option value="asc">Price: Low to High</option>
+                            <option value="desc">Price: High to Low</option>
+                        </select>
+                    </div>
+
+                    {/* Product card container */}
+                    {loading && 
+                        <div className='flex items-center justify-center h-[250px]'>
+                            <ColorRing
+                                visible={true}
+                                height="100"
+                                width="100"
+                                ariaLabel="color-ring-loading"
+                                wrapperStyle={{}}
+                                wrapperClass="color-ring-wrapper"
+                                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                            />
+                        </div>
+                    }
+                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
+                        {products && products.length > 0 && renderProducts()}
+                    </div>
+                    
+                </div>
+
+            </div>
             
         </div>
     )
 }
-
- {/* Product card container */}
-//  <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products !== null && products.length > 2 ? 'md:justify-between' : ''} `}>
-//  {products.length > 0 ? renderProducts() : <div>No products match the criteria.</div>}
-// </div>
 
 export default Search

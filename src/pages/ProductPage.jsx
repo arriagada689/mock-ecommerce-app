@@ -135,9 +135,9 @@ const ProductPage = () => {
     const handleImageLoad = (event) => {
         const { naturalWidth, naturalHeight } = event.target;
         if (naturalWidth > naturalHeight) {
-            setImgClass('mx-auto w-[400px] h-[250px] md:w-[650px] md:h-[450px] border rounded');
+            setImgClass('mx-auto w-[400px] h-[250px] md:w-[650px] md:h-[450px] border-2 border-gray-500 rounded');
         } else {
-            setImgClass('mx-auto w-[250px] h-[400px] md:w-[450px] md:h-[650px] border rounded');
+            setImgClass('mx-auto w-[250px] h-[400px] md:w-[450px] md:h-[650px] border-2 border-gray-500 rounded');
         }
     };
   

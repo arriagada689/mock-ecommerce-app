@@ -29,7 +29,7 @@ const Navbar = () => {
         <nav className="container mx-auto text-black p-4">
             <div className="flex items-center justify-between">
                 
-                <NavLink to='/' className="text-2xl">Mock E-Commerce App</NavLink>
+                <NavLink to='/' onClick={() => setIsOpen(false)} className="text-2xl">Mock E-Commerce App</NavLink>
             
                 <div className="hidden md:flex items-center space-x-4">
                     {isLoggedIn ? (
