@@ -128,7 +128,7 @@ const Search = () => {
                     
                     {/* search bar and sorting box container */}
                     <div className="flex justify-between mb-2 px-1">
-                        <div className={`border-2 ${isFocused ? 'border-black' : 'border-gray-400'} flex w-fit items-center focus:border-black`}>
+                        <div className={`border-2 ${isFocused ? 'border-black dark:border-white' : 'border-gray-400'} flex w-fit items-center focus:border-black`}>
                             <input 
                                 type="text" 
                                 value={query} 
@@ -136,12 +136,12 @@ const Search = () => {
                                 onChange={(e) => setQuery(e.target.value)}
                                 onFocus={() => setIsFocused(true)}
                                 onBlur={() => setIsFocused(false)}
-                                className='border-none focus:outline-none pl-2'
+                                className='border-none focus:outline-none pl-2 dark:bg-neutral-900'
                             />
                             <IoIosSearch size={20}/>
                         </div>
 
-                        <select id="sorting" name="price-sorting" onChange={handleSortingChange} className="border border-gray-500 py-2 w-fit">
+                        <select id="sorting" name="price-sorting" onChange={handleSortingChange} className="border border-gray-500 py-2 w-fit dark:bg-neutral-900">
                             <option value="asc">Price: Low to High</option>
                             <option value="desc">Price: High to Low</option>
                         </select>
@@ -161,7 +161,7 @@ const Search = () => {
                             />
                         </div>
                     }
-                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
+                    <div className={`p-2 gap-y-4 md:flex md:items-center md:flex-wrap ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
                         {products && products.length > 0 && renderProducts()}
                     </div>
                     
@@ -190,7 +190,7 @@ const Search = () => {
                     
                     {/* search bar and sorting box container */}
                     <div className="flex justify-between mb-2 px-1">
-                        <div className={`border-2 ${isFocused ? 'border-black' : 'border-gray-400'} flex w-fit items-center focus:border-black`}>
+                        <div className={`border-2 ${isFocused ? 'border-black dark:border-white' : 'border-gray-400'} flex w-fit items-center focus:border-black`}>
                             <input 
                                 type="text" 
                                 value={query} 
@@ -198,12 +198,12 @@ const Search = () => {
                                 onChange={(e) => setQuery(e.target.value)}
                                 onFocus={() => setIsFocused(true)}
                                 onBlur={() => setIsFocused(false)}
-                                className='border-none focus:outline-none pl-2'
+                                className='border-none focus:outline-none pl-2 dark:bg-neutral-900'
                             />
                             <IoIosSearch size={20}/>
                         </div>
 
-                        <select id="sorting" name="price-sorting" onChange={handleSortingChange} className="border border-gray-500 py-2 w-fit">
+                        <select id="sorting" name="price-sorting" onChange={handleSortingChange} className="border border-gray-500 py-2 w-fit dark:bg-neutral-900">
                             <option value="asc">Price: Low to High</option>
                             <option value="desc">Price: High to Low</option>
                         </select>

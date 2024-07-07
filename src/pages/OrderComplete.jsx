@@ -29,7 +29,7 @@ const OrderComplete = () => {
     
     return (
         <div className='flex flex-col items-center space-y-3'>
-            <div className='flex flex-col items-center border p-5 md:py-10 md:px-10 border-gray-500 rounded mt-10'>
+            <div className='flex flex-col items-center border p-5 md:py-10 md:px-10 border-gray-500 rounded mt-10 dark:bg-neutral-800'>
                 <BiShoppingBag size={150}/>
                 <div className='text-3xl font-bold text-center'>Order Complete</div>
                 <div className='text-xl'>order no: <span className='text-green-600'>{id ? id : ''}</span></div>
@@ -43,7 +43,7 @@ const OrderComplete = () => {
             {/* Grid goes here */}
             <div className='text-2xl font-bold'>Order Summary</div>
             {order && 
-                <div className='grid grid-cols-3 gap-4 w-2/3 p-5 border border-gray-500'>
+                <div className='grid grid-cols-3 gap-4 w-2/3 p-5 border border-gray-500 dark:bg-neutral-800'>
                     <div className='font-bold text-center'>Product</div>
                     <div className='font-bold text-center'>Unit Price</div>
                     <div className='font-bold text-center'>Quantity</div>

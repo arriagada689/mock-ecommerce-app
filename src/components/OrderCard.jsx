@@ -17,7 +17,7 @@ const OrderCard = ({ order }) => {
     }
 
     return (
-        <div className='bg-white p-2'>
+        <div className='bg-white dark:bg-neutral-800 p-2'>
             <div>order no: <span className='text-green-500'>{order.order._id}</span></div>
             <div>total: <span className='text-red-500'>${order.order.total.toFixed(2)}</span></div>
             <div>date: {formattedDate}</div>

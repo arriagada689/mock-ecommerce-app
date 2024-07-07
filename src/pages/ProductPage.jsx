@@ -158,7 +158,7 @@ const ProductPage = () => {
                     </div>
                     <div className='flex mx-auto md:mx-0'>
                         <div>Quantity:</div>
-                        <select name="quantity" id="quantity" value={quantity || 1} onChange={handleQuantityChange} className='border ml-2 w-fit'>
+                        <select name="quantity" id="quantity" value={quantity || 1} onChange={handleQuantityChange} className='border ml-2 w-fit dark:bg-neutral-900'>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
@@ -175,7 +175,7 @@ const ProductPage = () => {
                     {errorMessage && <div className='border-2 border-red-800 bg-red-300 p-1 px-2 w-fit text-red-600 mx-auto md:mx-0'>{ errorMessage }</div>}
 
                     <div className='flex space-x-5 mx-auto md:mx-0'>
-                        <button onClick={handleCartClick} className='bg-blue-700 w-fit text-white py-2 px-3 rounded'>Add To Cart</button>
+                        <button onClick={handleCartClick} className='bg-blue-700 hover:bg-blue-600 w-fit text-white py-2 px-3 rounded'>Add To Cart</button>
                         {favorite ? <button onClick={handleFavoriteClick} className='flex items-center border border-gray-300 w-fit py-2 px-3 rounded'><FaHeart/> <span className='ml-1'>Favorite</span></button> : 
                         <button onClick={handleFavoriteClick} className='flex items-center border border-gray-300 w-fit py-2 px-3 rounded'><FaRegHeart/> <span className='ml-1'>Favorite</span></button>}
                     </div>

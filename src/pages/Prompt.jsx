@@ -17,9 +17,9 @@ const Prompt = () => {
                 <div>Go Back</div>
             </button>
             <IoLogIn size={150}/>
-            <div className='text-3xl font-bold text-center'>You must <span className='underline'>log in</span> or <span className='underline'>sign up</span> to use this feature.</div>
+            <div className='text-3xl font-bold text-center'>You must <Link to={'/login'} className='text-blue-700 hover:underline'>log in</Link> or <Link className='text-blue-700 hover:underline'>sign up</Link> to use this feature.</div>
             <div className='flex space-x-12 mt-7'>
-                <Link to='/login' className='bg-blue-700 w-fit text-white py-2 px-3 rounded'>Login</Link>
+                <Link to='/login' className='bg-blue-700 hover:bg-blue-600 w-fit text-white py-2 px-3 rounded'>Login</Link>
                 <Link to='/signup' className='border border-gray-300 w-fit py-2 px-3 rounded'>Sign Up</Link>
             </div>
         </div>

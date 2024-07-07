@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext.jsx';
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
+import DarkModeToggle from './DarkModeToggle.jsx';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +27,13 @@ const Navbar = () => {
 
     return (
     <div className='border-b-2 border-gray-400'>
-        <nav className="container mx-auto text-black p-4">
+        <nav className="container mx-auto text-black dark:text-white p-4">
             <div className="flex items-center justify-between">
                 
                 <NavLink to='/' onClick={() => setIsOpen(false)} className="text-2xl">Mock E-Commerce App</NavLink>
             
-                <div className="hidden md:flex items-center space-x-4">
+                <div className="hidden md:flex items-center space-x-4 text-lg">
+                    <DarkModeToggle />
                     {isLoggedIn ? (
                         <>
                         <NavLink to="/profile" className="hover:text-gray-600">Profile</NavLink>
@@ -43,9 +45,13 @@ const Navbar = () => {
                         <NavLink to="/signup" className="hover:text-gray-600">Sign Up</NavLink>
                         </>}
                 </div>
-                <button className="md:hidden" onClick={() => setIsOpen(prev => !prev)}>
-                <GiHamburgerMenu size={30}/>
-                </button>
+                
+                <div className='md:hidden flex items-center space-x-4'>
+                    <DarkModeToggle />
+                    <button onClick={() => setIsOpen(prev => !prev)}>
+                        <GiHamburgerMenu size={30}/>
+                    </button>
+                </div>
             </div>
             {isOpen && isLoggedIn && 
                 <div className="md:hidden flex flex-col items-center space-y-2 mt-2">

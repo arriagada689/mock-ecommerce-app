@@ -66,18 +66,18 @@ const Cart = () => {
     }
   
     return (
-        <div className='bg-gray-100 h-screen overflow-auto'>
+        <div className='bg-gray-100 dark:bg-neutral-900 overflow-auto'>
             <div className='container mx-auto justify-center space-y-3 my-5 p-2 md:p-0 md:space-y-0 md:flex md:space-x-3'>
                 <div className='w-full md:w-[700px] xl:w-[850px]'>
                     <div className='text-2xl text-center mb-2'>Cart ({cartTotal})</div>
                     <div className='space-y-1'>
                         {cartItems.length > 0 ? renderCartCards() : 
-                            <div className='bg-white text-center text-xl py-4'>No products in the cart.</div>
+                            <div className='bg-white dark:bg-neutral-800 text-center text-xl py-4'>No products in the cart.</div>
                         }
                     </div>
                 </div>
                 
-                <div className='flex flex-col justify-center items-center space-y-2 bg-white p-2 md:w-[180px] xl:w-[200px]'>
+                <div className='flex flex-col justify-center items-center space-y-2 bg-white dark:bg-neutral-800 p-2 md:w-[180px] xl:w-[200px]'>
                     <IoBagCheckOutline size={50}/>
                     {total > 0 && (
                         <div className='text-lg mb-4 w-full flex justify-between'>

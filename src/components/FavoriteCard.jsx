@@ -30,7 +30,7 @@ const FavoriteCard = ({ product, setUpdate }) => {
     }
   
     return (
-        <div className='bg-white p-2 flex space-x-3 xl:w-[750px]'>
+        <div className='bg-white dark:bg-neutral-800 p-2 flex space-x-3 xl:w-[750px]'>
             <Link to={`/product/${product.id}`}>
                 <img src={product.image} alt={product.title} className='w-[90px] h-[90px]'/>
             </Link>

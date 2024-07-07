@@ -78,7 +78,7 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter your username" 
                 required
-                className='border border-gray-400 p-1 w-64 md:w-[450px]'
+                className='border border-gray-400 p-1 w-64 md:w-[450px] dark:bg-neutral-900'
               />
             </div>
             <div className='flex flex-col space-y-2 mb-4'>
@@ -90,10 +90,10 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 required
-                className='border border-gray-400 p-1 w-64 md:w-[450px]'
+                className='border border-gray-400 p-1 w-64 md:w-[450px] dark:bg-neutral-900'
               />
             </div>
-            <button type="submit" className='bg-blue-700 w-fit text-white py-2 px-3 rounded mb-4'>Log In</button>
+            <button type="submit" className='bg-blue-700 hover:bg-blue-600 w-fit text-white py-2 px-3 rounded mb-4'>Log In</button>
 
             <div>Don't have an account? <Link to='/signup' className='text-blue-500 underline' >Register</Link> </div>
         </Form>

@@ -58,7 +58,7 @@ const CartCard = ({ product, setUpdate }) => {
     }
 
     return (
-        <div className='bg-white p-2 flex space-x-3'>
+        <div className='bg-white dark:bg-neutral-800 p-2 flex space-x-3'>
             <Link to={`/product/${product.product.id}`}>
                 <img src={product.product.image} alt={product.product.title} className='w-[90px] h-[90px]'/>
             </Link>
@@ -69,7 +69,7 @@ const CartCard = ({ product, setUpdate }) => {
                     <div className='flex'>
                         <div className='flex'>
                             <div>Quantity:</div>
-                            <select className='border w-fit ml-1' name="quantity" id="quantity" value={quantity} onChange={handleQuantityChange}>
+                            <select className='border dark:bg-neutral-800 w-fit ml-1' name="quantity" id="quantity" value={quantity} onChange={handleQuantityChange}>
                                 <option value={1}>1</option>
                                 <option value={2}>2</option>
                                 <option value={3}>3</option>
