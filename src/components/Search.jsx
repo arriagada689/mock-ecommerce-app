@@ -161,7 +161,7 @@ const Search = () => {
                             />
                         </div>
                     }
-                    <div className={`p-2 gap-y-4 md:flex md:items-center md:flex-wrap ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
+                    <div className={`p-2 gap-y-4 md:flex md:items-center md:flex-wrap gap-x-4 `}>
                         {products && products.length > 0 && renderProducts()}
                     </div>
                     
@@ -223,7 +223,7 @@ const Search = () => {
                             />
                         </div>
                     }
-                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4 ${products && products.length > 0 && products.length > 2 ? 'md:justify-between' : ''} `}>
+                    <div className={`p-2 space-y-4 md:flex md:flex-wrap md:space-y-4  `}>
                         {products && products.length > 0 && renderProducts()}
                     </div>
                     

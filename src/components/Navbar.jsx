@@ -5,8 +5,11 @@ import { AuthContext } from '../contexts/AuthContext.jsx';
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import DarkModeToggle from './DarkModeToggle.jsx';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+    const location = useLocation()
+    const currentPath = location.pathname
     const [isOpen, setIsOpen] = useState(false);
     const { isLoggedIn } = useContext(AuthContext);
     const { logoutUser } = useContext(AuthContext)
@@ -31,18 +34,19 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
                 
                 <NavLink to='/' onClick={() => setIsOpen(false)} className="text-2xl">Mock E-Commerce App</NavLink>
-            
+
+                {/*Navbar for desktop */}
                 <div className="hidden md:flex items-center space-x-4 text-lg">
                     <DarkModeToggle />
                     {isLoggedIn ? (
                         <>
-                        <NavLink to="/profile" className="hover:text-gray-600">Profile</NavLink>
-                        <NavLink to="/cart" className="flex items-center space-x-2 hover:text-gray-600"><RiShoppingCart2Line size={24}/>{cartTotal}</NavLink>
-                        <NavLink onClick={(e) => logoutHandler(e)} className="hover:text-gray-600">Log Out</NavLink>
+                            <NavLink to="/profile" className={`hover:text-gray-600 px-2 py-1 rounded-lg ${currentPath.includes('profile') ? 'bg-black text-white' : ''}`}>Profile</NavLink>
+                            <NavLink to="/cart" className={`flex items-center space-x-2 hover:text-gray-600 px-2 py-1 rounded-lg ${currentPath.includes('cart') ? 'bg-black text-white' : ''}`}><RiShoppingCart2Line size={24}/>{cartTotal}</NavLink>
+                            <NavLink onClick={(e) => logoutHandler(e)} className="hover:text-gray-600">Log Out</NavLink>
                         </>
                     ) : <>
-                        <NavLink to="/login" className="hover:text-gray-600">Login</NavLink>
-                        <NavLink to="/signup" className="hover:text-gray-600">Sign Up</NavLink>
+                            <NavLink to="/login" className={`hover:text-gray-600 px-2 py-1 rounded-lg ${currentPath.includes('login') ? 'bg-black text-white' : ''}`}>Login</NavLink>
+                            <NavLink to="/signup" className={`hover:text-gray-600 px-2 py-1 rounded-lg ${currentPath.includes('signup') ? 'bg-black text-white' : ''}`}>Sign Up</NavLink>
                         </>}
                 </div>
                 
@@ -55,14 +59,14 @@ const Navbar = () => {
             </div>
             {isOpen && isLoggedIn && 
                 <div className="md:hidden flex flex-col items-center space-y-2 mt-2">
-                    <NavLink to="/profile" className="" onClick={() => setIsOpen(false)}>Profile</NavLink>
-                    <NavLink to="/cart" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}><RiShoppingCart2Line size={24}/>{cartTotal}</NavLink>
+                    <NavLink to="/profile" className={`px-2 py-1 rounded-lg ${currentPath.includes('profile') ? 'bg-black text-white' : ''}`} onClick={() => setIsOpen(false)}>Profile</NavLink>
+                    <NavLink to="/cart" className={`flex items-center space-x-2 px-2 py-1 rounded-lg ${currentPath.includes('cart') ? 'bg-black text-white' : ''}`} onClick={() => setIsOpen(false)}><RiShoppingCart2Line size={24}/>{cartTotal}</NavLink>
                     <NavLink onClick={(e) => {logoutHandler(e), setIsOpen(false)}} className="hover:text-gray-600 bg-transparent" >Log Out</NavLink>
                 </div> }
             {isOpen && !isLoggedIn &&
                 <div className="md:hidden flex flex-col items-center space-y-2 mt-2">
-                    <NavLink to="/login" className="" onClick={() => setIsOpen(false)}>Login</NavLink>
-                    <NavLink to="/signup" className="" onClick={() => setIsOpen(false)}>Sign Up</NavLink>
+                    <NavLink to="/login" className={`px-2 py-1 rounded-lg ${currentPath.includes('login') ? 'bg-black text-white' : ''}`} onClick={() => setIsOpen(false)}>Login</NavLink>
+                    <NavLink to="/signup" className={`px-2 py-1 rounded-lg ${currentPath.includes('signup') ? 'bg-black text-white' : ''}`} onClick={() => setIsOpen(false)}>Sign Up</NavLink>
                 </div>
             }
         </nav>
