@@ -10,6 +10,7 @@ const Search = () => {
     const [query, setQuery] = useState('');
     const [categoryFilter, setCategoryFilter] = useState(null)
     const [priceFilter, setPriceFilter] = useState(null)
+    const [secondaryPriceFilter, setSecondaryPriceFilter] = useState(null)
     const [ratingFilter, setRatingFilter] = useState(null)
     const [priceSorting, setPriceSorting] = useState('asc')
     const [isFocused, setIsFocused] = useState(false);
@@ -89,6 +90,8 @@ const Search = () => {
         } else if (e.target.value === 'over'){
             setPriceFilter({min: 120, max: 9999999});
         }
+
+        setSecondaryPriceFilter(e.target.value)
     }
 
     const handleRatingChange = (e) => {
@@ -119,6 +122,7 @@ const Search = () => {
                     categoryFilter={categoryFilter}
                     handlePriceChange={handlePriceChange}
                     priceFilter={priceFilter}
+                    secondaryPriceFilter={secondaryPriceFilter}
                     handleRatingChange={handleRatingChange}
                     ratingFilter={ratingFilter}
                 />
@@ -183,6 +187,7 @@ const Search = () => {
                     priceFilter={priceFilter}
                     handleRatingChange={handleRatingChange}
                     ratingFilter={ratingFilter}
+                    secondaryPriceFilter={secondaryPriceFilter}
                 />}
 
                 {/* right side container */}

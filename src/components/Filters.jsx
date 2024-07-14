@@ -1,7 +1,7 @@
 import React from 'react'
 import { Rating } from '@smastrom/react-rating'
 
-const Filters = ({ handleCategoryChange, categoryFilter, handlePriceChange, priceFilter, handleRatingChange, ratingFilter }) => {
+const Filters = ({ handleCategoryChange, categoryFilter, handlePriceChange, priceFilter, secondaryPriceFilter, handleRatingChange, ratingFilter }) => {
     
     return (
         <div className={`mx-auto md:flex-none w-fit md:border-r px-1 space-y-6`}>
@@ -14,19 +14,19 @@ const Filters = ({ handleCategoryChange, categoryFilter, handlePriceChange, pric
                     <label htmlFor="all">All</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="electronics" name='category' value='electronics' onChange={handleCategoryChange}/>
+                    <input type="radio" id="electronics" name='category' value='electronics' onChange={handleCategoryChange} checked={categoryFilter === 'electronics'}/>
                     <label htmlFor="electronics">Electronics</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="jewelry" name='category' value='jewelery' onChange={handleCategoryChange}/>
+                    <input type="radio" id="jewelry" name='category' value='jewelery' onChange={handleCategoryChange} checked={categoryFilter === 'jewelery'}/>
                     <label htmlFor="jewelry">Jewelry</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="mens-clothing" name='category' value="men's clothing" onChange={handleCategoryChange}/>
+                    <input type="radio" id="mens-clothing" name='category' value="men's clothing" onChange={handleCategoryChange} checked={categoryFilter === "men's clothing"}/>
                     <label htmlFor="mens-clothing">Men's Clothing</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="womens-clothing" name='category' value="women's clothing" onChange={handleCategoryChange}/>
+                    <input type="radio" id="womens-clothing" name='category' value="women's clothing" onChange={handleCategoryChange} checked={categoryFilter === "women's clothing"}/>
                     <label htmlFor="womens-clothing">Women's Clothing</label>
                 </div>
             </div>
@@ -39,27 +39,27 @@ const Filters = ({ handleCategoryChange, categoryFilter, handlePriceChange, pric
                     <label htmlFor="price-all">All</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-ten" name='price' value='ten' onChange={handlePriceChange}/>
+                    <input type="radio" id="price-ten" name='price' value='ten' onChange={handlePriceChange} checked={secondaryPriceFilter === 'ten'}/>
                     <label htmlFor="price-ten">$0 - $10</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-twenty" name='price' value='twenty' onChange={handlePriceChange} />
+                    <input type="radio" id="price-twenty" name='price' value='twenty' onChange={handlePriceChange} checked={secondaryPriceFilter === 'twenty'}/>
                     <label htmlFor="price-twenty">$10 - $20</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-forty" name='price' value='forty' onChange={handlePriceChange} />
+                    <input type="radio" id="price-forty" name='price' value='forty' onChange={handlePriceChange} checked={secondaryPriceFilter === 'forty'}/>
                     <label htmlFor="price-forty">$20 - $40</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-sixty" name='price' value='sixty' onChange={handlePriceChange} />
+                    <input type="radio" id="price-sixty" name='price' value='sixty' onChange={handlePriceChange} checked={secondaryPriceFilter === 'sixty'}/>
                     <label htmlFor="price-sixty">$40 - $60</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-one-twenty" name='price' value='one-twenty' onChange={handlePriceChange} />
+                    <input type="radio" id="price-one-twenty" name='price' value='one-twenty' onChange={handlePriceChange} checked={secondaryPriceFilter === 'one-twenty'}/>
                     <label htmlFor="price-one-twenty">$60 - $120</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="price-over" name='price' value='over' onChange={handlePriceChange} />
+                    <input type="radio" id="price-over" name='price' value='over' onChange={handlePriceChange} checked={secondaryPriceFilter === 'over'}/>
                     <label htmlFor="price-over">Over $120</label>
                 </div>
             </div>
@@ -72,19 +72,19 @@ const Filters = ({ handleCategoryChange, categoryFilter, handlePriceChange, pric
                     <label htmlFor="rating-all">All</label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="rating-1" name='rating' value={1} onChange={handleRatingChange}/>
+                    <input type="radio" id="rating-1" name='rating' value={1} onChange={handleRatingChange} checked={Number(ratingFilter) === 1}/>
                     <label htmlFor="rating-1" className='flex space-x-1'><Rating style={{ maxWidth: 75 }} value={1} readOnly={true}/> <div>& up</div></label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="rating-2" name='rating' value={2} onChange={handleRatingChange}/>
+                    <input type="radio" id="rating-2" name='rating' value={2} onChange={handleRatingChange} checked={Number(ratingFilter) === 2}/>
                     <label htmlFor="rating-2" className='flex space-x-1'><Rating style={{ maxWidth: 75 }} value={2} readOnly={true}/> <div>& up</div></label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="rating-3" name='rating' value={3} onChange={handleRatingChange}/>
+                    <input type="radio" id="rating-3" name='rating' value={3} onChange={handleRatingChange} checked={Number(ratingFilter) === 3}/>
                     <label htmlFor="rating-3" className='flex space-x-1'><Rating style={{ maxWidth: 75 }} value={3} readOnly={true}/> <div>& up</div></label>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <input type="radio" id="rating-4" name='rating' value={4} onChange={handleRatingChange}/>
+                    <input type="radio" id="rating-4" name='rating' value={4} onChange={handleRatingChange} checked={Number(ratingFilter) === 4}/>
                     <label htmlFor="rating-4" className='flex space-x-1'><Rating style={{ maxWidth: 75 }} value={4} readOnly={true}/> <div>& up</div></label>
                 </div>
             </div>
