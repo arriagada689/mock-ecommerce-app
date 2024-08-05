@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className='border border-gray-400 md:border-none md:w-60 hover:shadow-lg dark:bg-neutral-800 p-2 dark:rounded-lg dark:hover:bg-neutral-700'>
             <Link to={`/product/${product.id}`} className=''>
-                <img src={`../public/images/${product.id}.jpg`} alt={product.title} className='h-40 mx-auto'/>
+                <img src={`/images/${product.id}.jpg`} alt={product.title} className='h-40 mx-auto'/>
                 <div className='mt-1'>
                     <div className='flex items-center'>
                         <Rating style={{ maxWidth: 85 }} value={product.rating.rate} readOnly={true}/>
