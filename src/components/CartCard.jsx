@@ -60,7 +60,7 @@ const CartCard = ({ product, setUpdate }) => {
     return (
         <div className='bg-white dark:bg-neutral-800 p-2 flex space-x-3'>
             <Link to={`/product/${product.product.id}`}>
-                <img src={`../public/images/${product.product.id}.jpg`} alt={product.product.title} className='w-[90px] h-[90px]'/>
+                <img src={`/images/${product.product.id}.jpg`} alt={product.product.title} className='w-[90px] h-[90px]'/>
             </Link>
 
             <div className='w-full flex flex-col space-y-1'>

@@ -145,7 +145,7 @@ const ProductPage = () => {
     <>
         {product && !cartClick &&
             <div className='container flex flex-col md:flex-row mx-auto mt-5 md:space-x-3 mb-8'>
-                <img src={`../public/images/${product.id}.jpg`} alt={ product.title } onLoad={handleImageLoad} className={imgClass}/>
+                <img src={`/images/${product.id}.jpg`} alt={ product.title } onLoad={handleImageLoad} className={imgClass}/>
 
                 <div className='flex flex-col space-y-4 px-2'>
                     <div>{ capitalizeWords(product.category) }</div>
