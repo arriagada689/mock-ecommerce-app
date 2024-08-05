@@ -140,12 +140,14 @@ const ProductPage = () => {
             setImgClass('mx-auto w-[250px] h-[400px] md:w-[450px] md:h-[650px] border-2 border-gray-500 rounded');
         }
     };
+
+    //{product.image}
   
     return (
     <>
         {product && !cartClick &&
             <div className='container flex flex-col md:flex-row mx-auto mt-5 md:space-x-3 mb-8'>
-                <img src={product.image} alt={ product.title } onLoad={handleImageLoad} className={imgClass}/>
+                <img src={`../images/${product.id}.jpg`} alt={ product.title } onLoad={handleImageLoad} className={imgClass}/>
 
                 <div className='flex flex-col space-y-4 px-2'>
                     <div>{ capitalizeWords(product.category) }</div>
